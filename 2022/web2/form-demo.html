@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form Demo</title>
+  </head>
+  <body>
+    <h1>使用GET 發送表單資料至 httpbin.org</h1>
+    <form action="https://httpbin.org/get" method="get">
+      <input type="text" name="method" value="我是GET請求" />
+      <input type="text" name="text" placeholder="文字" value="早安" />
+      <input type="number" name="num" placeholder="數字" value="123" />
+      <input type="submit" value="送出" />
+    </form>
+
+    <h1>使用POST 發送表單資料至 httpbin.org</h1>
+    <form action="https://httpbin.org/post" method="post">
+      <input type="text" name="method" value="我是POST請求" />
+      <input type="text" name="text" placeholder="文字" value="午安" />
+      <input type="number" name="num" placeholder="數字" value="456" />
+      <input type="submit" value="送出" />
+    </form>
+  </body>
+</html>

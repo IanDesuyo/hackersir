@@ -1,0 +1,30 @@
+.container {
+  margin: 0 auto; /* 置中對齊 */
+  width: 600px; /* 容器寬度為600px */
+  text-align: center; /* 文字置中 */
+}
+.container form {
+  border: 1px solid; /* 實心1px的外框線 */
+  border-radius: 4px; /* 4px的園角 */
+  padding: 16px; /* 內部填充16px */
+}
+.container form input[type="submit"] {
+  margin-left: 32px; /* 左側外部填充32px */
+}
+#result {
+  margin: 16px;
+  padding: 2px;
+  border-radius: 32px;
+}
+.underweight {
+  background-color: rgb(255, 255, 0); /* 背景顏色 */
+}
+.normal {
+  background-color: rgb(136, 238, 136);
+}
+.overweight {
+  background-color: rgb(255, 0, 0);
+}
+.error {
+  background-color: rgb(255, 0, 0);
+}
