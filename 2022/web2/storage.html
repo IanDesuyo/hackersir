@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Storage Demo</title>
+  </head>
+  <body>
+    <h1>設定Local Storage</h1>
+    <form id="set-ls">
+      <input type="text" name="text" placeholder="ABC" />
+      <input type="submit" value="設定" />
+    </form>
+
+    <h1>Local Storage的資料</h1>
+    <p id="get-ls"></p>
+
+    <h1>設定Session Storage</h1>
+    <form id="set-ss">
+      <input type="text" name="text" placeholder="ABC" />
+      <input type="submit" value="設定" />
+    </form>
+
+    <h1>Session Storage的資料</h1>
+    <p id="get-ss"></p>
+
+    <script>
+      // 從localStorage讀取資料並顯示在網頁上
+      document.querySelector("#get-ls").textContent = localStorage.getItem("text");
+
+      // 將資料儲存在localStorage
+      document.querySelector("#set-ls").addEventListener("submit", function (e) {
+        e.preventDefault();
+        const text = document.querySelector("#set-ls input[name=text]").value;
+        localStorage.setItem("text", text);
+
+        location.reload();
+      });
+
+      // 從sessionStorage讀取資料並顯示在網頁上
+      document.querySelector("#get-ss").textContent = sessionStorage.getItem("text");
+
+      // 將資料儲存在sessionStorage
+      document.querySelector("#set-ss").addEventListener("submit", function (e) {
+        e.preventDefault();
+        const text = document.querySelector("#set-ss input[name=text]").value;
+        sessionStorage.setItem("text", text);
+
+        location.reload();
+      });
+    </script>
+  </body>
+</html>
