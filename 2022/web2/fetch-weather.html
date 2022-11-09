@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather Demo</title>
+  </head>
+  <body>
+    <h1>臺中市現在的天氣</h1>
+
+    <p>現在氣象: <span id="Wx"></span></p>
+    <p>最低溫度: <span id="MinT"></span>°C</p>
+    <p>最高溫度: <span id="MaxT"></span>°C</p>
+
+    <script>
+      let API_TOKEN = localStorage.getItem("demo_openweatherdata_token");
+
+      if (!API_TOKEN) {
+        API_TOKEN = prompt("請輸入API Token");
+        localStorage.setItem("demo_openweatherdata_token", API_TOKEN);
+      }
+
+      fetch(
+        `https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-C0032-001?locationName=臺中市&elementName=Wx,MinT,MaxT&Authorization=${API_TOKEN}`
+      )
+        .then(function (res) {
+          return res.json();
+        })
+        .then(function (data) {
+          // 找到資料中的 location, 我們只抓取第一個
+          const location = data.records.location[0];
+          // location 中的 weatherElement 是一個array, 裡面包含著 Wx, MinT, MaxT 三個object
+          const weatherElement = location.weatherElement;
+
+          // 透過 forEach 來把每個 weatherElement 的資料取出來
+          weatherElement.forEach(function (element) {
+            // elementName 會是 Wx, MinT, MaxT
+            const elementName = element.elementName;
+            // 抓取第一個時間的資料
+            const elementValue = element.time[0].parameter.parameterName;
+            // 把資料塞到對應的 element 中
+            document.getElementById(elementName).textContent = elementValue;
+          });
+        });
+    </script>
+  </body>
+</html>
