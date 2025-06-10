@@ -15,7 +15,7 @@ Jinja2==3.1.5
 line-bot-sdk==2.4.2
 MarkupSafe==2.1.2
 multidict==6.0.4
-requests==2.32.2
+requests==2.32.4
 urllib3==1.26.19
 Werkzeug==3.0.6
 yarl==1.8.2
